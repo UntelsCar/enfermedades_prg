@@ -9,7 +9,7 @@ class usuario{
 	}
     public function getUser($user, $password)
 	{
-        //ession_start();
+        //session_start();
 
 		// Realizar la conexión
 		$conexion = $this->EjecutarConexion();
