@@ -25,11 +25,10 @@ class inicioView extends apartadosViews
 			<div class="flex h-screen overflow-hidden">
 				<?php $this->formSideBarShow(); ?>
 				<div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-					<?php $this->formHeadShow_2(); ?>
 
 					<!-- ===== Main  ===== -->
-					<main class="h-full bg-gray-900 select-none">
-						<div class="mx-auto max-w-screen-2xl p-4 h-full text-white">
+					<main class="h-full bg-green-100 select-none">
+						<div class="mx-auto max-w-screen-2xl p-4 h-full text-black">
 							Escribe tu vida aqui, igual no lo voy a leer...
 						</div>
 					</main>
@@ -39,9 +38,6 @@ class inicioView extends apartadosViews
 			</div>
 
 		</body>
-		<script>
-			<?php include_once("../js/styleHeader.js"); ?>
-		</script>
 
 		</html>
 <?php
