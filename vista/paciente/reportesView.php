@@ -1,9 +1,9 @@
 
 <?php
-include_once(__DIR__ . '/../compartidos/apartadosViews.php');
+include_once(__DIR__ ."../../compartidos/apartadosViews.php");
 class reportesView extends apartadosViews
 {
-	public function mostrarReportes()
+	public function reportes()
 	{
 ?>
 		<!DOCTYPE html>
@@ -15,7 +15,7 @@ class reportesView extends apartadosViews
 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			<link rel="icon" type="image/png" href="../images/JBCTEXTIL.png">
 			<title>
-				Resportes
+				Inicio
 			</title>
 			<script src="https://cdn.tailwindcss.com"></script>
 		</head>
