@@ -4,7 +4,7 @@ include_once('../modelo/usuario.php');
 $usuario_model = new usuario();
 
 
-if (isset($_POST['b_ingresar']) and strlen($_POST['loginUser']) > 0 and strlen($_POST['loginPassword']) >= 0) {
+if (isset($_POST['b_ingresar']) ) {
     
 	$user = trim($_POST['loginUser']);
 	$password = trim($_POST['loginPassword']);
@@ -26,6 +26,10 @@ if (isset($_POST['b_ingresar']) and strlen($_POST['loginUser']) > 0 and strlen($
 	    $objMsj = new mensajeSistema;
 	    $objMsj->mensajeSistemaShow("Error: usuario no encontrado <br>", "../index.php");
     }
+}elseif (isset($_POST['b_inicio'])){
+        include_once('../vista/inicioView.php');
+        $inicioView = new inicioView;
+        $inicioView->inicio();
 
 } else {
 	include_once('../compartido/mensajeSistema.php');

@@ -1,6 +1,6 @@
 
 <?php
-include_once("../vista/compartidos/apartadosViews.php");
+include_once(__DIR__ ."../../vista/compartidos/apartadosViews.php");
 class inicioView extends apartadosViews
 {
 	public function inicio()

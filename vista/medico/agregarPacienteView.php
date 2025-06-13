@@ -1,9 +1,9 @@
 
 <?php
-include_once("../compartidos/apartadosViews.php");
-class agregarPacienteViewView extends apartadosViews
+include_once(__DIR__ ."../../compartidos/apartadosViews.php");
+class agregarPacienteView extends apartadosViews
 {
-	public function agregarPacienteView()
+	public function agregarPaciente()
 	{
 ?>
 		<!DOCTYPE html>
