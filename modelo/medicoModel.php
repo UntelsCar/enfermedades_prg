@@ -1,16 +1,16 @@
 <?php
 include_once(__DIR__ . "/conexion.php");
 
-class medicoModel 
+class medicoModel
 {
 	private $conn;
 
 	public function __construct()
-{
-    include_once(__DIR__ . "/conexion.php"); // Asegura la ruta correcta
-    $conexion = new Conexion();
-    $this->conn = $conexion->conectarbd();
-}
+	{
+		include_once(__DIR__ . "/conexion.php"); // Asegura la ruta correcta
+		$conexion = new Conexion();
+		$this->conn = $conexion->conectarbd();
+	}
 	public function crearUsuarioPaciente($nombres, $apellidos, $dni)
 	{
 		// Separar nombres y apellidos

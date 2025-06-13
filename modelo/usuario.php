@@ -1,46 +1,49 @@
 <?php 
-class usuario{
+class usuario {
 
     private function EjecutarConexion()
-	{
-		include_once(__DIR__ . '/conexion.php');
-		$OBJConexion = new Conexion;
-		return $OBJConexion->conectarbd();
-	}
+    {
+        include_once(__DIR__ . '/conexion.php');
+        $OBJConexion = new Conexion;
+        return $OBJConexion->conectarbd();
+    }
+
     public function getUser($user, $password)
-	{
-		// Realizar la conexión
-		$conexion = $this->EjecutarConexion();
+    {
+        $conexion = $this->EjecutarConexion();
 
-		$consultaLogin = "SELECT u.idusuario, u.usuario, u.rol, u.estado, u.clave, m.idmedico 
-	                  FROM usuario u 
-	                  LEFT JOIN medico m ON u.idusuario = m.idusuario 
-	                  WHERE u.usuario = '$user' AND u.estado = 'a'";
-		
-		$resultado = mysqli_query($conexion, $consultaLogin);
+        $consultaLogin = "SELECT u.idusuario, u.usuario, u.rol, u.estado, u.clave, m.idmedico 
+                          FROM usuario u 
+                          LEFT JOIN medico m ON u.idusuario = m.idusuario 
+                          WHERE u.usuario = ? AND u.estado = 'a'";
 
-		// Comprobar si se encontraron resultados && (md5($password) == $usuario['clave'])
-		if (($usuario = mysqli_fetch_assoc($resultado))) {
+        $stmt = $conexion->prepare($consultaLogin);
+        $stmt->bind_param("s", $user);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
 
-            $_SESSION['idusuario'] = $usuario['idusuario'];
-            $_SESSION['usuario'] = $usuario['usuario'];
-            $_SESSION['rol'] = $usuario['rol'];
-            $_SESSION['estado'] = $usuario['estado'];
-            $_SESSION['clave'] = $usuario['clave'];
-			
-			// Guardar idmedico si existe y si el rol es de médico
-			if ($usuario['rol'] == 'm' && !empty($usuario['idmedico'])) {
-				$_SESSION['param_idmedico'] = $usuario['idmedico'];
-			}
-			
-            mysqli_close($conexion);//chequear
-		    return $usuario;
-		} else {
-			mysqli_close($conexion);//chequear
-		    return null;
-		}
-		
-	}
+        if ($usuario = $resultado->fetch_assoc()) {
+            // Verificar contraseña con password_verify
+            if (password_verify($password, $usuario['clave'])) {
+
+                // Guardar variables de sesión
+                $_SESSION['idusuario'] = $usuario['idusuario'];
+                $_SESSION['usuario'] = $usuario['usuario'];
+                $_SESSION['rol'] = $usuario['rol'];
+                $_SESSION['estado'] = $usuario['estado'];
+                
+                // Si es médico
+                if ($usuario['rol'] == 'm' && !empty($usuario['idmedico'])) {
+                    $_SESSION['param_idmedico'] = $usuario['idmedico'];
+                }
+
+                return $usuario;
+            } else {
+                return null; // Contraseña incorrecta
+            }
+        } else {
+            return null; // Usuario no encontrado
+        }
+    }
 }
-
- ?>
+?>
