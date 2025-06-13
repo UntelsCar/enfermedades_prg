@@ -1,9 +1,9 @@
 
 <?php
-include_once("../compartidos/apartadosViews.php");
-class agregarPacienteViewView extends apartadosViews
+include_once("../vista/compartidos/apartadosViews.php");
+class inicioView extends apartadosViews
 {
-	public function agregarPacienteView()
+	public function inicio()
 	{
 ?>
 		<!DOCTYPE html>
@@ -29,7 +29,7 @@ class agregarPacienteViewView extends apartadosViews
 					<!-- ===== Main  ===== -->
 					<main class="h-full bg-green-100 select-none">
 						<div class="mx-auto max-w-screen-2xl p-4 h-full text-black">
-							Agregar Paciente
+							Listar Sintomas
 						</div>
 					</main>
 					<!-- ===== Main ===== -->
