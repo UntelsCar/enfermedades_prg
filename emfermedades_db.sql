@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 12-06-2025 a las 06:48:26
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 14-06-2025 a las 01:46:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -66,7 +66,9 @@ CREATE TABLE `medico` (
 --
 
 INSERT INTO `medico` (`idmedico`, `apellidos`, `nombres`, `colegiado`, `idusuario`) VALUES
-(1, 'perez', 'juan', '123456', 1);
+(1, 'Bravo Veintemilla', 'Jorge Alberto', '123456', 1),
+(2, 'Peña Chirinos', 'Carlos Joel', '12345', 2),
+(3, 'Fernandez Huaman', 'Andre Rafael', '54321', 3);
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,21 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`idpaciente`, `idmedico`, `apellidos`, `nombres`, `dni`, `fechahora`, `idusuario`) VALUES
-(1, 1, 'diaz', 'carlos', '12345678', '2021-07-18 00:25:10', 2);
+(1, 1, 'diaz', 'carlos', '12345678', '2021-07-18 00:25:10', 2),
+(3, 1, 'Bravo Veintemilla', 'Jorge Alberto', '71123093', '2025-06-13 02:51:45', 6),
+(5, 1, 'BRAVO', 'ALBERTO', '71123093', '2025-06-13 02:56:30', 8),
+(7, 1, 'peña', 'carlos', '12345678', '2025-06-13 17:26:37', 11),
+(8, 1, 'moises', 'jose', '12345678', '2025-06-13 17:27:50', 12),
+(9, 1, 'torres', 'henry', '12345678', '2025-06-13 17:30:42', 13),
+(14, 1, 'herrera', 'hans', '12345678', '2025-06-13 17:36:31', 18),
+(15, 1, 'herrera', 'hans', '12345678', '2025-06-13 17:38:03', 19),
+(16, 1, 'herrera', 'hans', '12345678', '2025-06-13 17:38:15', 20),
+(17, 1, 'caballero', 'diego', '12345678', '2025-06-13 17:38:39', 21),
+(18, 1, 'caballero', 'diego', '12345678', '2025-06-13 17:40:20', 22),
+(20, 1, 'diego', 'juand', '12345678', '2025-06-13 17:40:46', 24),
+(22, 1, 'bravo', 'jose', '12345678', '2025-06-13 17:45:53', 26),
+(23, 1, 'calderon', 'jorge', '12345678', '2025-06-13 17:46:34', 27),
+(24, 1, 'fernandez', 'luis', '12345678', '2025-06-13 17:46:46', 28);
 
 -- --------------------------------------------------------
 
@@ -139,10 +155,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `usuario`, `clave`, `rol`, `estado`) VALUES
-(1, 'jperez', '202cb962ac59075b964b07152d234b70', 'm', 'a'),
-(2, 'cdiaz', '202cb962ac59075b964b07152d234b70', 'p', 'a'),
-(3, 'carlos', '123', 'm', 'a'),
-(4, 'elnegro', '123', 'p', 'a');
+(1, 'jbravo', '$2y$10$7452m7BcyCegJngDKb.cZuHL5.tpKxqu2DVGWU7MOob7SDXTfTjpK', 'm', 'a'),
+(2, 'cpena', '$2y$10$uWhjWKr2yH.U45GDkVqXjeYkCXzPZvQ5nfH0nkRK2vd5nS.zKCOja', 'm', 'a'),
+(3, 'afernandez', '$2y$10$UWPj3sbk3waDW1zbbxqfQe0.B7fMIeyM/ctwcMCVv964isAE0rn4K', 'm', 'a');
 
 --
 -- Índices para tablas volcadas
@@ -204,13 +219,13 @@ ALTER TABLE `atencion_sintoma`
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `idmedico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idmedico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `idpaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idpaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `sintoma`
@@ -222,7 +237,7 @@ ALTER TABLE `sintoma`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
