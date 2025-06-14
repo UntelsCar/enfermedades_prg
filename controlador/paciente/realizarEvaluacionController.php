@@ -17,11 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['b_Evaluacion'])) {
     }
 
     $modelo = new evaluacionModel();
-    $resultado = $modelo->evaluarProlog($pares); // Retorna el resultado como string
+    $resultado = trim($modelo->evaluarProlog($pares)); // Retorna el resultado como string
 
-    echo $resultado; // Importante: solo imprime
-}
-else {
+    // Verifica que haya un paciente logueado (ajusta según tu sistema)
+    $idpaciente = $_SESSION['param_idpaciente'] ?? null;
+
+    if ($idpaciente) {
+        $modelo->guardarDiagnostico($idpaciente, $pares, $resultado);
+        echo $resultado; // Mostrar el resultado en el modal
+    } else {
+        echo "Error: Sesión de paciente no encontrada.";
+    }
+} else {
     // Método GET o sin botón: mostrar el formulario de evaluación
     $sintomas = $modelo->obtenerSintomas();
     $evaluacionView->realizarEvaluacion($sintomas);
