@@ -1,5 +1,6 @@
-<?php 
-class usuario {
+<?php
+class usuario
+{
 
     private function EjecutarConexion()
     {
@@ -12,10 +13,11 @@ class usuario {
     {
         $conexion = $this->EjecutarConexion();
 
-        $consultaLogin = "SELECT u.idusuario, u.usuario, u.rol, u.estado, u.clave, m.idmedico 
-                          FROM usuario u 
-                          LEFT JOIN medico m ON u.idusuario = m.idusuario 
-                          WHERE u.usuario = ? AND u.estado = 'a'";
+        $consultaLogin = "SELECT u.idusuario, u.usuario, u.rol, u.estado, u.clave, m.idmedico, p.idpaciente
+            FROM usuario u
+            LEFT JOIN medico m ON u.idusuario = m.idusuario
+            LEFT JOIN paciente p ON u.idusuario = p.idusuario
+            WHERE u.usuario = ? AND u.estado = 'a'";
 
         $stmt = $conexion->prepare($consultaLogin);
         $stmt->bind_param("s", $user);
@@ -31,12 +33,17 @@ class usuario {
                 $_SESSION['usuario'] = $usuario['usuario'];
                 $_SESSION['rol'] = $usuario['rol'];
                 $_SESSION['estado'] = $usuario['estado'];
-                
+
                 // Si es médico
                 if ($usuario['rol'] == 'm' && !empty($usuario['idmedico'])) {
                     $_SESSION['param_idmedico'] = $usuario['idmedico'];
                 }
 
+                // Si es paciente
+                if ($usuario['rol'] == 'p' && !empty($usuario['idpaciente'])) {
+                    $_SESSION['param_idpaciente'] = $usuario['idpaciente'];
+                }
+                
                 return $usuario;
             } else {
                 return null; // Contraseña incorrecta

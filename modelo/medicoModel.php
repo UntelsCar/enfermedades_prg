@@ -20,9 +20,9 @@ class medicoModel
 		// Obtener primeras 2 letras de los nombres (pueden ser dos nombres o uno solo)
 		$letrasNombre = '';
 		if (count($nombrePartes) >= 2) {
-			$letrasNombre = strtolower(substr($nombrePartes[0], 0, 1) . substr($nombrePartes[1], 0, 1));
+			$letrasNombre = substr($nombrePartes[0], 0, 1) . substr($nombrePartes[1], 0, 1);
 		} else {
-			$letrasNombre = strtolower(substr($nombrePartes[0], 0, 2));
+			$letrasNombre = substr($nombrePartes[0], 0, 2);
 		}
 
 		// Obtener los dos apellidos
