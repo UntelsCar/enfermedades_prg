@@ -92,5 +92,32 @@ class evaluacionModel
             }
         }
     }
+
+    // Devuelve lista de evaluaciones
+    public function listarEvaluacionesPorPaciente($idpaciente)
+    {
+        $sql = "SELECT idatencion, resultado, fechahora FROM atencion WHERE idpaciente = $idpaciente ORDER BY idatencion DESC";
+        $resultado = mysqli_query($this->conn, $sql);
+        $datos = [];
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            $datos[] = $fila;
+        }
+        return $datos;
+    }
+
+    public function obtenerSintomasPorEvaluacion($idatencion)
+    {
+        $sql = "SELECT s.sintoma, UPPER(as_.respuesta) AS respuesta 
+            FROM atencion_sintoma as_
+            JOIN sintoma s ON as_.idsintoma = s.idsintoma
+            WHERE as_.idatencion = $idatencion";
+        $resultado = mysqli_query($this->conn, $sql);
+        $datos = [];
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            $fila['respuesta'] = ($fila['respuesta'] === 'S') ? 'Sí' : 'No';
+            $datos[] = $fila;
+        }
+        return $datos;
+    }
 }
 ?>
