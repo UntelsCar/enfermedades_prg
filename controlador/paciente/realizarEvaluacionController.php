@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['b_Evaluacion'])) {
         $pares[] = $id . ";" . $respuesta;
     }
 
-    $modelo = new evaluacionModel();
     $resultado = trim($modelo->evaluarProlog($pares)); // Retorna el resultado como string
 
     // Verifica que haya un paciente logueado (ajusta según tu sistema)
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['b_Evaluacion'])) {
         echo "Error: Sesión de paciente no encontrada.";
     }
 } else {
-    // Método GET o sin botón: mostrar el formulario de evaluación
+    // Mostrar el formulario de evaluación
     $sintomas = $modelo->obtenerSintomas();
     $evaluacionView->realizarEvaluacion($sintomas);
 }
