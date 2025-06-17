@@ -4,8 +4,6 @@ session_start();
 include_once(__DIR__ . "/../../modelo/medicoModel.php");
 include_once(__DIR__ . "/../../vista/medico/agregarPacienteView.php");
 
-$mensajeExito = ""; // Inicializa la variable para el mensaje
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
     isset($_POST['b_agregarPaciente']) &&
     !empty($_POST['nombres']) &&
@@ -39,9 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
 
 // Mostrar la vista
 $pacienteView = new agregarPacienteView();
-$pacienteView->agregarPaciente($mensajeExito);
+$pacienteView->agregarPaciente();
 
-// Mostrar mensaje si existe
-if (!empty($mensajeExito)) {
-}
 ?>

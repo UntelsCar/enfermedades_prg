@@ -2,7 +2,7 @@
 include_once(__DIR__ . "../../compartidos/apartadosViews.php");
 class agregarPacienteView extends apartadosViews
 {
-	public function agregarPaciente($mensajeExito = '')
+	public function agregarPaciente()
 	{
 		?>
 		<!DOCTYPE html>

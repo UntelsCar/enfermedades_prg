@@ -10,11 +10,6 @@ class evaluacionModel
         $this->conn = $conexion->conectarbd();
     }
 
-    public function getConexion()
-    {
-        return $this->conn;
-    }
-
     public function obtenerSintomas()
     {
         $sql = "SELECT * FROM sintoma ORDER BY idsintoma";

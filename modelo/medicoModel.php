@@ -7,9 +7,9 @@ class medicoModel
 
 	public function __construct()
 	{
-		include_once(__DIR__ . "/conexion.php"); // Asegura la ruta correcta
-		$conexion = new Conexion();
-		$this->conn = $conexion->conectarbd();
+		include_once(__DIR__ . "/conexion.php"); // Carga el archivo conexion.php que contiene la clase Conexion.
+		$conexion = new Conexion();              // Crea una instancia de la clase Conexion.
+		$this->conn = $conexion->conectarbd();   // Llama a conectarbd() y guarda el objeto de conexión en $conn.
 	}
 	public function crearUsuarioPaciente($nombres, $apellidos, $dni)
 	{
