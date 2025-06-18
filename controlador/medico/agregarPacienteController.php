@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once(__DIR__ . "/../../modelo/medicoModel.php");
+include_once(__DIR__ ."/../../modelo/medicoModel.php" );
 include_once(__DIR__ . "/../../vista/medico/agregarPacienteView.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
