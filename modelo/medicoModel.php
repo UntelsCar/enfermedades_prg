@@ -59,5 +59,28 @@ class medicoModel
 		$stmt->bind_param("isssi", $idmedico, $apellidos, $nombres, $dni, $idusuario);
 		return $stmt->execute();
 	}
+
+	public function listarPacientesPorMedico($idmedico, $busqueda = '')
+{
+    $sql = "SELECT idpaciente, nombres, apellidos, dni, fechahora 
+            FROM paciente 
+            WHERE idmedico = ? AND (nombres LIKE ? OR apellidos LIKE ? OR dni LIKE ?)
+            ORDER BY idpaciente DESC";
+
+    $like = "%$busqueda%";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bind_param("isss", $idmedico, $like, $like, $like);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    $pacientes = [];
+    while ($fila = $resultado->fetch_assoc()) {
+        $pacientes[] = $fila;
+    }
+
+    return $pacientes;
+}
+
+
 }
 ?>
