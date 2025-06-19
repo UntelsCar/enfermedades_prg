@@ -19,7 +19,7 @@ enfermedad('Sarampion') :- tiene(s1), tiene(s3), tiene(s4), tiene(s7).
 
 % Diagn�stico principal que el sistema debe usar
 diagnostico(E) :- enfermedad(E), !.
-diagnostico('La informaci�n no es suficiente').
+diagnostico('La informacion no es suficiente').
 
 % Limpia s�ntomas previos
 limpiar :- retract(tiene(_)), fail.

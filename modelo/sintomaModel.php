@@ -13,7 +13,7 @@ class sintomaModel
 
     public function listarSintomas($busqueda = '')
     {
-        $sql = "SELECT idsintoma, sintoma FROM sintoma WHERE sintoma LIKE ? ORDER BY idsintoma DESC";
+        $sql = "SELECT idsintoma, sintoma FROM sintoma WHERE sintoma LIKE ? ORDER BY idsintoma ASC";
         $like = "%$busqueda%";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $like);
