@@ -18,6 +18,14 @@ class listarSintomasView extends apartadosViews
     <?php $this->formSideBarShow(); ?>
     <div class="flex-1 p-6 bg-green-100">
         <h1 class="text-2xl font-bold mb-4">Listado de Síntomas</h1>
+
+        <!-- Botón Agregar -->
+        <div class="text-right mb-4">
+            <button onclick="abrirModalAgregar()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                ➕ Agregar Síntoma
+            </button>
+        </div>
+
         <input type="text" id="busqueda" placeholder="Buscar síntoma..." class="mb-4 px-4 py-2 border rounded w-full" />
 
         <table class="w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -33,7 +41,7 @@ class listarSintomasView extends apartadosViews
     </div>
 </div>
 
-<!-- Modal editar -->
+<!-- Modal Editar -->
 <div id="modalEditar" class="fixed inset-0 bg-black bg-opacity-40 hidden z-50 justify-center items-center">
     <div class="bg-white p-6 rounded shadow-lg w-full max-w-md mx-auto">
         <h2 class="text-xl font-bold mb-4">Editar Síntoma</h2>
@@ -49,11 +57,25 @@ class listarSintomasView extends apartadosViews
     </div>
 </div>
 
+<!-- Modal Agregar -->
+<div id="modalAgregar" class="fixed inset-0 bg-black bg-opacity-40 hidden z-50 justify-center items-center">
+    <div class="bg-white p-6 rounded shadow-lg w-full max-w-md mx-auto">
+        <h2 class="text-xl font-bold mb-4">Agregar Síntoma</h2>
+        <form id="formAgregar">
+            <label>Síntoma</label>
+            <input type="text" id="nuevo_sintoma" name="sintoma" class="w-full p-2 border rounded mb-4" required>
+            <div class="flex justify-end space-x-2">
+                <button type="button" onclick="cerrarModalAgregar()" class="bg-gray-500 text-white px-4 py-2 rounded">Cancelar</button>
+                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
 function cargarSintomas() {
     const query = document.getElementById('busqueda').value;
     fetch('../../controlador/medico/listarSintomasController.php?busqueda=' + encodeURIComponent(query))
-
         .then(res => res.json())
         .then(data => {
             const tabla = document.getElementById('tabla-sintomas');
@@ -116,6 +138,32 @@ function eliminarSintoma(id) {
     }
 }
 
+function abrirModalAgregar() {
+    document.getElementById('modalAgregar').classList.remove('hidden');
+}
+
+function cerrarModalAgregar() {
+    document.getElementById('modalAgregar').classList.add('hidden');
+    document.getElementById('nuevo_sintoma').value = '';
+}
+
+document.getElementById('formAgregar').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const datos = new FormData(this);
+    fetch('../../modelo/sintomaAgregarModel.php', {
+        method: 'POST',
+        body: datos
+    }).then(res => res.text()).then(res => {
+        if (res.trim() === 'OK') {
+            alert('Síntoma agregado');
+            cerrarModalAgregar();
+            cargarSintomas();
+        } else {
+            alert("Error: " + res);
+        }
+    });
+});
+
 document.getElementById('busqueda').addEventListener('input', cargarSintomas);
 window.onload = cargarSintomas;
 </script>
@@ -124,6 +172,7 @@ window.onload = cargarSintomas;
 <?php
     }
 }
+
 $vista = new listarSintomasView();
 $vista->mostrarVista();
 ?>
