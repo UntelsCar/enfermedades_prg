@@ -13,14 +13,16 @@ lista([H|T]) :-
 
 % Enfermedades ordenadas por especificidad (mas síntomas primero)
 enfermedad('COVID-19') :- tiene(s1), tiene(s2), tiene(s3), tiene(s4), tiene(s5), tiene(s6), tiene(s8).
-enfermedad('Mononucleosis Infecciosa') :- tiene(s1), tiene(s2), tiene(s3), tiene(s6).
+enfermedad('Mononucleosis Infecciosa') :- tiene(s1), tiene(s2), tiene(s6), tiene(s11).
 enfermedad('Dengue Clasico') :- tiene(s1), tiene(s2), tiene(s3), tiene(s5).
 enfermedad('Sarampion') :- tiene(s1), tiene(s4), tiene(s7).
 % Diagnóstico principal
 
 % Agregado desde PHP
 
-enfermedad('nEnfermedad1') :- tiene(s1), tiene(s3), tiene(s5).
+enfermedad('enfermedad1') :- tiene(s15), tiene(s16).
+
+enfermedad('enfermedad2') :- tiene(s9), tiene(s11), tiene(s15), tiene(s16).
 
 %aquiAgregar
 
