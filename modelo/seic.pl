@@ -12,25 +12,17 @@ lista([H|T]) :-
     lista(T).
 
 % Enfermedades ordenadas por especificidad (mas síntomas primero)
-enfermedad('COVID-19') :- tiene(s1), tiene(s2), tiene(s3), tiene(s4), tiene(s5), tiene(s6), tiene(s7).
+enfermedad('COVID-19') :- tiene(s1), tiene(s2), tiene(s3), tiene(s4), tiene(s5), tiene(s6), tiene(s8).
 enfermedad('Mononucleosis Infecciosa') :- tiene(s1), tiene(s2), tiene(s3), tiene(s6).
-enfermedad('Dengue Clasico') :- tiene(s1), tiene(s2), tiene(s4), tiene(s5).
-enfermedad('Sarampion') :- tiene(s1), tiene(s3), tiene(s4), tiene(s7).
+enfermedad('Dengue Clasico') :- tiene(s1), tiene(s2), tiene(s3), tiene(s5).
+enfermedad('Sarampion') :- tiene(s1), tiene(s4), tiene(s7).
 % Diagnóstico principal
 
 % Agregado desde PHP
 
 enfermedad('nEnfermedad1') :- tiene(s1), tiene(s3), tiene(s5).
 
-enfermedad('nEnfermedad2') :- tiene(s12), tiene(s13).
-
-enfermedad('amargo') :- tiene(s10), tiene(s11), tiene(s12), tiene(s13).
-
-enfermedad('nuevapapu') :- tiene(s6), tiene(s8), tiene(s10), tiene(s12), tiene(s13).
-
-enfermedad('papu') :- tiene(s2), tiene(s10), tiene(s12), tiene(s13).
-
-enfermedad('jalados') :- tiene(s1), tiene(s3), tiene(s5), tiene(s13).
+%aquiAgregar
 
 diagnostico(Mejor) :-
     findall(Coincidencias-Nombre, (enfermedad(Nombre), contar_sintomas(Nombre, Coincidencias)), Lista),
@@ -59,4 +51,3 @@ limpiar.
 % === ESTA ES LA PARTE CRUCIAL QUE TE FALTA: LISTAR ENFERMEDADES ===
 listar_enfermedades(L) :-
     findall(N, clause(enfermedad(N), _), L).
-

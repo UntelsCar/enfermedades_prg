@@ -14,16 +14,16 @@ if (isset($_POST['b_ingresar']) ) {
     if ($datos){
         // Verificar contraseña con password_verify
         if (password_verify($password, $datos['clave'])) {
-            // Guardar variables de sesión
+
             $_SESSION['idusuario'] = $datos['idusuario'];
             $_SESSION['usuario'] = $datos['usuario'];
             $_SESSION['rol'] = $datos['rol'];
             $_SESSION['estado'] = $datos['estado'];
-            // Si es médico
+
             if ($datos['rol'] == 'm' && !empty($datos['idmedico'])) {
                 $_SESSION['param_idmedico'] = $datos['idmedico'];
                 }
-            // Si es paciente
+
             if ($datos['rol'] == 'p' && !empty($datos['idpaciente'])) {
                 $_SESSION['param_idpaciente'] = $datos['idpaciente'];
                 }
@@ -31,7 +31,7 @@ if (isset($_POST['b_ingresar']) ) {
                 $inicioView = new inicioView;
                 $inicioView->inicio();
             } else {
-                //Contra incorrecta
+
                 $_SESSION['usuario'] = $datos['usuario'];
                 $_SESSION['error_contraseña'] = "La contraseña es incorrecta";
                 include_once('../vista/loginView.php');
@@ -39,7 +39,7 @@ if (isset($_POST['b_ingresar']) ) {
                 $Login->loginView();
                 }
         } else {
-            // Usuario no encontrado
+
             $_SESSION['error_usuario'] = "El usuario es incorrecto";
             include_once('../vista/loginView.php');
             $Login = new Login;
@@ -51,10 +51,7 @@ if (isset($_POST['b_ingresar']) ) {
         $inicioView->inicio();
 
 } else {
-    echo("Error 2");
-	//include_once('../compartido/mensajeSistema.php');
-	//$objMsj = new mensajeSistema;
-	//$objMsj->mensajeSistemaShow("Error: Se ha detectado un acceso no autorizado<br>o los valores ingresados en la autenticacion no son validos <br>", "../index.php");
+    echo("No te metas en mi programa");
 }
 
 

@@ -14,7 +14,7 @@ function obtenerEnfermedades() {
         return trim($e, " '\"\t\n\r\0\x0B]");
     }, explode(",", $output));
 
-    return $enfermedades; // ← Esto faltaba
+    return $enfermedades;
 }
 
 

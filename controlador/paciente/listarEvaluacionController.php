@@ -30,6 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
         return $ev['resultado'] !== 'La informacion no es suficiente' && in_array($ev['resultado'], $validas);
     });
 
-    $vista->listarEvaluacion(array_values($filtradas)); // reindexar
+    $vista->listarEvaluacion(array_values($filtradas));
 }
 ?>

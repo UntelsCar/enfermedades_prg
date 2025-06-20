@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $patron = "/(diagnostico\(E\) :- enfermedad\(E\), !\.)/";
+    $patron = "/(%aquiAgregar)/";
     $nuevoContenido = preg_replace($patron, $linea . "\n$1", $contenido);
     file_put_contents($archivo, $nuevoContenido);
 

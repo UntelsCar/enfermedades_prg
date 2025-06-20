@@ -18,9 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
     if (!isset($_SESSION['param_idmedico'])) {
         die("No se ha encontrado la sesión del médico. Inicie sesión nuevamente.");
     }
-    $idmedico = $_SESSION['param_idmedico']; // Suponiendo que ya lo tienes en sesión
+    $idmedico = $_SESSION['param_idmedico'];
 
-    // Instanciar el modelo
     $modelo = new medicoModel();
 
     // Crear usuario
@@ -34,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
     header("Location: " . $_SERVER['PHP_SELF'] . "?exito=1");
     exit;
 } 
-
 // Mostrar la vista
 $pacienteView = new agregarPacienteView();
 $pacienteView->agregarPaciente();

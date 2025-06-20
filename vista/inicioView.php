@@ -42,7 +42,6 @@ class inicioView extends apartadosViews
                                 <p>Bienvenido a nuestra página. Aquí encontrarás información relevante sobre enfermedades comunes y sus síntomas. A continuación, te presentamos una breve descripción de algunas de las enfermedades más conocidas: Mononucleosis, Dengue, Sarampión y COVID-19.</p>
                             </div>
 
-                            <!-- Sección de las enfermedades (Tabla) -->
                             <div class="grid grid-cols-2 gap-6 mt-8">
 
                                 <!-- Mononucleosis -->

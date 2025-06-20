@@ -15,8 +15,6 @@ class Conexion
             echo "Error: " . $e->getMessage();
         }
     }
-
-    // Método para cerrar la conexión
     public function cerrar()
     {
         if ($this->conn) {

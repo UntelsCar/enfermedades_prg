@@ -83,7 +83,7 @@ class reportesView extends apartadosViews
 					data: {
 						labels: labels, // Enfermedades como etiquetas del eje X
 						datasets: [{
-							label: 'Cantidad de pacientes',
+							label: 'Cantidad de evaluaciones',
 							data: data, // Cantidad de pacientes como valores del eje Y
 							backgroundColor: '#4CAF50', // Color de las barras
 							borderColor: '#388E3C', // Color de los bordes de las barras

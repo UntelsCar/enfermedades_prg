@@ -7,7 +7,7 @@ if (isset($_POST['b_reportes'])) {
     $modelo = new atencionModel();
     $enfermedadesCant = $modelo->getVecesEnfermedad($_SESSION['param_idpaciente']);
 
-    // 🟩 Obtener lista real de enfermedades desde seic.pl
+    // Obtener lista real de enfermedades desde seic.pl
     $rutaProlog = __DIR__ . "/../../modelo/seic.pl";
     $comando = "swipl -s $rutaProlog -g \"listar_enfermedades(L), write(L), nl.\" -t halt.";
     $salida = shell_exec($comando);
@@ -16,7 +16,7 @@ if (isset($_POST['b_reportes'])) {
         return trim($e, "'\" ");
     }, explode(",", $salida));
 
-    // 🟥 Filtrar para mantener solo enfermedades válidas
+    // Filtrar para mantener solo enfermedades válidas
     $enfermedadesFiltradas = array_filter($enfermedadesCant, function($item) use ($enfermedadesPl) {
         return in_array($item['enfermedad'], $enfermedadesPl);
     });

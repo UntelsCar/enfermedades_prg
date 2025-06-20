@@ -19,12 +19,12 @@ class Login
 		<body class="bg-gradient-to-r from-green-100 to-green-200 min-h-screen flex items-center justify-center font-sans">
 			<div class="bg-white rounded-3xl shadow-lg flex flex-col md:flex-row overflow-hidden w-[90%] md:w-[80%] lg:w-[65%]">
 
-				<!-- Lado izquierdo con ilustración -->
+				<!-- Lado izquierdo -->
 				<div class="md:w-1/2 p-8 bg-gradient-to-b from-green-600 to-green-500 flex items-center justify-center">
 					<img src="/enfermedades_prg/assets/logo.png" alt="Login Ilustración" class="w-[80%] max-w-xs">
 				</div>
 
-				<!-- Lado derecho con formulario -->
+				<!-- Lado derecho -->
 				<div class="md:w-1/2 p-8">
 					<h2 class="text-2xl font-bold text-green-700 text-center mb-6">Inicio de Sesión</h2>
 
@@ -59,9 +59,7 @@ class Login
 					</form>
 				</div>
 
-			</div>
-
-			
+			</div>	
 		</body>
 		</html>
 			<script>

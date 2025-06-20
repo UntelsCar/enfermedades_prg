@@ -159,10 +159,10 @@ class apartadosViews{
 
                     </div>
                 </nav>
-                <!-- Sidebar Menu -->
+
             </div>
         </div>
-        <!-- ===== Sidebar  ===== -->
+
     <?php
     }
 
