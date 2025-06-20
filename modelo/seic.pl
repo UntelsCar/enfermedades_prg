@@ -26,7 +26,12 @@ enfermedad('nEnfermedad2') :- tiene(s12), tiene(s13).
 
 enfermedad('amargo') :- tiene(s10), tiene(s11), tiene(s12), tiene(s13).
 
-%diagnostico(E) :- enfermedad(E), !.
+enfermedad('nuevapapu') :- tiene(s6), tiene(s8), tiene(s10), tiene(s12), tiene(s13).
+
+enfermedad('papu') :- tiene(s2), tiene(s10), tiene(s12), tiene(s13).
+
+enfermedad('jalados') :- tiene(s1), tiene(s3), tiene(s5), tiene(s13).
+
 diagnostico(Mejor) :-
     findall(Coincidencias-Nombre, (enfermedad(Nombre), contar_sintomas(Nombre, Coincidencias)), Lista),
     sort(0, @>=, Lista, [ _-Mejor | _ ]).

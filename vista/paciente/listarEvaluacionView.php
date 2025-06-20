@@ -16,7 +16,7 @@ class listarEvaluacionView extends apartadosViews
         <body>
             <div class="flex h-screen overflow-hidden">
                 <?php $this->formSideBarShow(); ?>
-                <div class="flex-1 p-6 bg-green-100">
+                <div class="flex-1 p-6 bg-green-100 overflow-y-auto">
                     <h1 class="text-2xl font-bold mb-6">Mis Evaluaciones</h1>
 
                     <table class="w-full bg-white shadow-md rounded-lg overflow-hidden">

@@ -6,9 +6,10 @@ class apartadosViews{
     protected function formSideBarShow()
     {
     ?>
-        <div class="-translate-x-full absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col bg-gradient-to-b from-green-600 to-green-200 ease-linear lg:static lg:translate-x-0">
-
+        <div class="-translate-x-full fixed left-0 top-0 z-9999 flex h-full w-72.5 flex-col bg-gradient-to-b from-green-600 to-green-200 ease-linear lg:static lg:translate-x-0">
+            
             <div class="flex items-center gap-4 px-7 py-5.5 select-none">
+
                 <div class="flex flex-col items-center gap-1 px-7 py-5.5 rounded-lg w-64">
                     <!-- Logo -->
                     <img 

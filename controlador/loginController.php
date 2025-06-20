@@ -2,7 +2,8 @@
 session_start();
 include_once('../modelo/usuario.php');
 $usuario_model = new usuario();
-
+unset($_SESSION['error_contraseña']);
+unset($_SESSION['error_usuario']);
 
 if (isset($_POST['b_ingresar']) ) {
     
@@ -30,16 +31,19 @@ if (isset($_POST['b_ingresar']) ) {
                 $inicioView = new inicioView;
                 $inicioView->inicio();
             } else {
-                // Contraseña incorrecta
-                include_once(__DIR__ ."/../../vista/compartidos/mensajeSistema.php" );
-                $mensaje = new mensajeSistema;
-                $mensaje->mensajeError(); 
+                //Contra incorrecta
+                $_SESSION['usuario'] = $datos['usuario'];
+                $_SESSION['error_contraseña'] = "La contraseña es incorrecta";
+                include_once('../vista/loginView.php');
+                $Login = new Login;
+                $Login->loginView();
                 }
         } else {
             // Usuario no encontrado
-            include_once(__DIR__ ."/../vista/compartidos/mensajeSistema.php" );
-            $mensaje = new mensajeSistema;
-            $mensaje->mensajeError();
+            $_SESSION['error_usuario'] = "El usuario es incorrecto";
+            include_once('../vista/loginView.php');
+            $Login = new Login;
+            $Login->loginView();
         }
 }elseif (isset($_POST['b_inicio'])){
         include_once('../vista/inicioView.php');

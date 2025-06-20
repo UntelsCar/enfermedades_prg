@@ -21,7 +21,7 @@ class realizarEvaluacionView extends apartadosViews
             <div class="flex h-screen overflow-hidden">
                 <?php $this->formSideBarShow(); ?>
                 <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-                    <main class="h-full bg-green-100 p-8 text-black">
+                    <main class="flex-1 bg-green-100 p-8 text-black">
                         <h1 class="text-2xl font-bold mb-6">Realizar Evaluación</h1>
 
                         <form id="form-evaluacion">
